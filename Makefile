@@ -52,7 +52,7 @@ output.txt: cache-test calculate
 plot: output.txt
 	gnuplot scripts/runtime.gp
 
-calculate: calculate.c
+calculate: calculate_hashsz.c
 	$(CC) $(CFLAGS_common) $^ -o $@
 
 .PHONY: clean

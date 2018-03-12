@@ -2,7 +2,7 @@
 #define _PHONEBOOK_H
 
 #define MAX_LAST_NAME_SIZE 16
-#define MAX_HASH_TABLE_SIZE (1 << 10)
+#define MAX_HASH_TABLE_SIZE (1 << 15)
 
 /* small struct and hash function*/
 #define HASH1 1
