@@ -6,12 +6,38 @@
 #include "phonebook_hash1.h"
 
 
-int hashFunction(char *str) //BKDR
+int hashFunction(char *str)
 {
+    /*BKDR*/
     int seed = 31;
     int hash = 0;
     while(*str)
         hash = hash * seed + (*str++);
+
+    /*RS*
+    	unsigned int b = 378551;
+    	unsigned int a = 63689;
+    	unsigned int hash = 0;
+    	while(*str){
+    		hash = hash * a + (*str++);
+    		a *= b;
+    	}
+    */
+    /*DJB*
+    	unsigned hash = 5381;
+    	while(*str)
+    		hash += (hash << 5) + (*str++);
+    */
+    /*SDBM*
+    	int hash = 0;
+    	while(*str)
+    		hash -= (hash << 6) + (hash << 16) + (*str++);
+    */
+    /*JS*
+    	unsigned int hash = 1315423911;
+    	while(*str)
+    		hash ^= (hash << 5) + (hash >> 2) + (*str++);
+    */
     return (hash & (MAX_HASH_TABLE_SIZE-1));
 }
 
