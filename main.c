@@ -9,7 +9,11 @@
 #ifdef OPT
 #define OUT_FILE "opt.txt"
 #else
+#ifdef HASH1
+#define OUT_FILE "hash1.txt"
+#else
 #define OUT_FILE "orig.txt"
+#endif
 #endif
 
 #define DICT_FILE "./dictionary/words.txt"
@@ -49,6 +53,13 @@ int main(int argc, char *argv[])
     e = pHead;
     e->pNext = NULL;
 
+#ifdef HASH1
+    /*hashTable initial*/
+    for(i = 0; i < MAX_HASH_TABLE_SIZE; i++)
+        hashTable[i] = NULL;
+    i = 0;
+#endif
+
 #if defined(__GNUC__)
     __builtin___clear_cache((char *) pHead, (char *) pHead + sizeof(entry));
 #endif
@@ -69,12 +80,12 @@ int main(int argc, char *argv[])
     e = pHead;
 
     /* the givn last name to find */
-    char input[MAX_LAST_NAME_SIZE] = "zyxel";
+    char input[MAX_LAST_NAME_SIZE] = "zyxel";//zyxel
     e = pHead;
 
     assert(findName(input, e) &&
            "Did you implement findName() in " IMPL "?");
-    assert(0 == strcmp(findName(input, e)->lastName, "zyxel"));
+    assert(0 == strcmp(findName(input, e)->lastName, "zyxel"));//zyxel
 
 #if defined(__GNUC__)
     __builtin___clear_cache((char *) pHead, (char *) pHead + sizeof(entry));
