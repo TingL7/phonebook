@@ -6,15 +6,16 @@
 
 #include IMPL
 
-#ifdef OPT
+/*#ifdef OPT
 #define OUT_FILE "opt.txt"
 #else
+*/
 #ifdef HASH1
-#define OUT_FILE "hash1.txt"
+#define OUT_FILE "opt.txt"
 #else
 #define OUT_FILE "orig.txt"
 #endif
-#endif
+//#endif
 
 #define DICT_FILE "./dictionary/words.txt"
 
